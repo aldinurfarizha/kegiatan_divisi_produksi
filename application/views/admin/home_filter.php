@@ -136,7 +136,7 @@
     <th bgcolor="#e2e2e2" width="15%"><i class="fa fa-calendar"></i> TGL Input</th>
 	<th bgcolor="#e2e2e2" width="15%"><i class="fa fa-map-marker"></i> Lokasi</th>
 	<th bgcolor="#00a65a" style="color:#fff"><i class="fa fa-check"></i> Memenuhi Syarat (MS)</th>
-  <th bgcolor="#ff523f" style="color:#fff" width="15%"><i class="fa fa-close"></i> Tidak Memenuhi Syarat (TMS)</th>
+  <th bgcolor="#F9D56E" style="color:#fff" width="15%"><i class="fa fa-close"></i> Tidak Memenuhi Syarat (TMS)</th>
   <th bgcolor="#f0ad4e" style="color:#fff" width="15%"><i class="fa fa-clock-o"></i> Jumlah Sample</th>
   <th bgcolor="#0073b7" style="color:#fff" ><i class="fa fa-percent"></i> Persentase</th>
   <th width="15%"><i class="fa fa-sticky-note"></i> Keterangan</th>

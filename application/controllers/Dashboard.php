@@ -27,10 +27,7 @@ class Dashboard extends CI_Controller {
             redirect('login');
         }
         else{
-			$data['data_atas']=$this->m_test->tampil_total();
-			$data['data']=$this->m_test->tampil_test();
-			$data['grafik']=$this->m_test->tampil_grafik();
-			$this->load->view('admin/home',$data);
+			$this->load->view('admin/home');
         }
 	}
 	public function filter(){

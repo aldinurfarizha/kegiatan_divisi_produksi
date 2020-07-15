@@ -16,34 +16,25 @@
           </span>
         </a>
       </li>
-      <li class="treeview <?php if($this->uri->segment('1')=='test'){echo"active menu-open";}?>">
+
+      <li class="treeview <?php if($this->uri->segment('1')=='kegiatan') { echo"active menu-open" ;}?>">
         <a href="#">
-          <i class="fa fa-flask"></i>
-          <span>Hasil Test</span>
+          <i class="fa fa-wrench"></i>
+          <span>Kegiatan</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php if($this->uri->segment('2')=='input_hasil_test2') { echo"active";}?>"><a href="<?php echo base_url('test/input_hasil_test2') ?>"><i class="fa fa-plus"></i>Input Hasil Test</a></li>
-          <li class="<?php if($this->uri->segment('2')=='tampil_data_test') { echo"active";}?>"><a href="<?php echo base_url('test/tampil_data_test') ?>"><i class="fa fa-database"></i> Data Seluruh Hasil Test </a></li>
+        <li class="<?php if($this->uri->segment('2')=='tambah_kegiatan') { echo"active" ;}?>"><a href="<?php echo base_url('kegiatan/tambah_kegiatan') ?>"><i class="fa fa-plus"></i>Tambah Data Kegiatan</a></li>
+          <li class="<?php if($this->uri->segment('2')=='data_kegiatan') { echo"active" ;}?>"><a href="<?php echo base_url('kegiatan/data_kegiatan') ?>"><i class="fa fa-list"></i> Data Kegiatan</a></li>
+
+          
+ 
         </ul>
       </li>
+      
 
-
-      <li class="treeview <?php if($this->uri->segment('1')=='zona') { echo"active menu-open" ;}?>">
-        <a href="#">
-          <i class="fa fa-map-marker"></i>
-          <span>Lokasi</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class="<?php if($this->uri->segment('2')=='data_zona') { echo"active" ;}?>"><a href="<?php echo base_url('zona/data_zona') ?>"><i class="fa fa-home"></i> Data Lokasi</a></li>
-          <li class="<?php if($this->uri->segment('2')=='tambah_zona') { echo"active" ;}?>"><a href="<?php echo base_url('zona/tambah_zona') ?>"><i class="fa fa-address-book"></i> Tambah Lokasi</a></li>
-        </ul>
-      </li>
 
       
 
