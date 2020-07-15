@@ -23,5 +23,9 @@ class m_kegiatan extends CI_Model{
                  return $pertama;
                  return $kedua;
       }
+      public function ambil_kegiatan($bulan,$tahun){
+        $hsl=$this->db->query("SELECT * FROM kegiatan where MONTH(waktu_kegiatan)='$bulan' AND YEAR(waktu_kegiatan)='$tahun'");
+        return $hsl;
+      }
     }
 ?>

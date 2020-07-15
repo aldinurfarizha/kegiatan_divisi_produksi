@@ -50,7 +50,7 @@
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-calendar"></i> Pilih Waktu</h3>
               </div>
-              <form method="post" class="form-horizontal" enctype="multipart/form-data" action="<?php echo base_url().'test/pilih' ?>">
+              <form method="post" class="form-horizontal" enctype="multipart/form-data" action="<?php echo base_url().'kegiatan/pilih' ?>">
                 <div class="box-body">
 <label><i class="fa fa-calendar"></i> Bulan</label>
     <div class="input-group col-lg-6">

@@ -89,6 +89,27 @@
               </div>
               </div>
 
+              <div class="box-body">
+            <label for=""><i class="fa fa-user-circle-o"></i> Pelaksana</label>
+            <div class="input-group col-lg-5">
+                <span class="input-group-addon">Nama</span>
+                <input type="text" name="nama_pelaksana" class="form-control" value="<?php
+                   foreach ($data->result_array() as $sws){
+                    $nama_kadiv=$sws['nama_pelaksana'];
+                echo $nama_kadiv; 
+                   }?>" >
+              </div>
+              <br>
+              <div class="input-group col-lg-5">
+                <span class="input-group-addon">NIK</span>
+                <input type="text" name="nik_pelaksana" class="form-control" value="<?php
+                   foreach ($data->result_array() as $sws){
+                    $nama_kadiv=$sws['nik_pelaksana'];
+                echo $nama_kadiv; 
+                   }?>" >
+              </div>
+              </div>
+
           
 
              
