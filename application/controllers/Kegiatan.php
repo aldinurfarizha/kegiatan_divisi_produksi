@@ -13,6 +13,20 @@ class Kegiatan extends CI_Controller{
     {
     $this->load->view('kegiatan/v_tambah_kegiatan');
     }
+    public function detail_kegiatan($id_kegiatan){
+      $data['kegiatan']=$this->m_kegiatan->ambil_kegiatan_param($id_kegiatan);
+      $data['detail']=$this->m_kegiatan->ambil_detail_kegiatan_param($id_kegiatan);
+      $this->load->view('kegiatan/v_lihat_kegiatan',$data);
+
+
+    }
+    public function edit_kegiatan($id_kegiatan){
+      $data['kegiatan']=$this->m_kegiatan->ambil_kegiatan_param($id_kegiatan);
+      $data['detail']=$this->m_kegiatan->ambil_detail_kegiatan_param($id_kegiatan);
+      $this->load->view('kegiatan/v_edit_kegiatan',$data);
+
+
+    }
     public function insert_kegiatan(){
         $kegiatan=$this->input->post("kegiatan");
         $waktu_kegiatan=$this->input->post("waktu_kegiatan");
@@ -29,6 +43,50 @@ class Kegiatan extends CI_Controller{
         $penanggung_jawab6=$this->input->post("penanggung_jawab6");
         $keterangan=$this->input->post("keterangan");
         $this->m_kegiatan->tambah_kegiatan($kegiatan, $waktu_kegiatan, $output, $uraian_kegiatan, $kendala, $tindak_lanjut, $penanggung_jawab, $penanggung_jawab2,$penanggung_jawab3, $penanggung_jawab4, $penanggung_jawab5, $penanggung_jawab6,$indikators, $keterangan);
+    }
+    public function tambah_detail_kegiatan(){
+      $id_kegiatan=$this->input->post("id_kegiatan");
+      $uraian_kegiatan=$this->input->post("uraian_kegiatan");
+        $kendala=$this->input->post("kendala");
+        $tindak_lanjut=$this->input->post("tindak_lanjut");
+        $indikators=$this->input->post("indikator");
+        $penanggung_jawab=$this->input->post("penanggung_jawab");
+        $penanggung_jawab2=$this->input->post("penanggung_jawab2");
+        $penanggung_jawab3=$this->input->post("penanggung_jawab3");
+        $penanggung_jawab4=$this->input->post("penanggung_jawab4");
+        $penanggung_jawab5=$this->input->post("penanggung_jawab5");
+        $penanggung_jawab6=$this->input->post("penanggung_jawab6");
+        $keterangan=$this->input->post("keterangan");
+        $this->m_kegiatan->tambah_detail_kegiatan($id_kegiatan,$uraian_kegiatan, $kendala, $tindak_lanjut, $penanggung_jawab, $penanggung_jawab2,$penanggung_jawab3, $penanggung_jawab4, $penanggung_jawab5, $penanggung_jawab6,$indikators, $keterangan);
+        $this->session->set_flashdata('berhasil', 'Data Berhasil Di tambahkan');
+        redirect ('kegiatan/edit_kegiatan/'.$id_kegiatan);
+    }
+    public function edit_detail_kegiatan(){
+      $id_detail_kegiatan=$this->input->post("id_detail_kegiatan");
+      $id_kegiatan=$this->input->post("id_kegiatan");
+      $uraian_kegiatan=$this->input->post("uraian_kegiatan");
+        $kendala=$this->input->post("kendala");
+        $tindak_lanjut=$this->input->post("tindak_lanjut");
+        $indikators=$this->input->post("indikator");
+        $penanggung_jawab=$this->input->post("penanggung_jawab");
+        $penanggung_jawab2=$this->input->post("penanggung_jawab2");
+        $penanggung_jawab3=$this->input->post("penanggung_jawab3");
+        $penanggung_jawab4=$this->input->post("penanggung_jawab4");
+        $penanggung_jawab5=$this->input->post("penanggung_jawab5");
+        $penanggung_jawab6=$this->input->post("penanggung_jawab6");
+        $keterangan=$this->input->post("keterangan");
+        $this->m_kegiatan->edit_detail_kegiatan($id_detail_kegiatan,$uraian_kegiatan, $kendala, $tindak_lanjut, $penanggung_jawab, $penanggung_jawab2,$penanggung_jawab3, $penanggung_jawab4, $penanggung_jawab5, $penanggung_jawab6,$indikators, $keterangan);
+        $this->session->set_flashdata('edit', 'Data Berhasil Di tambahkan');
+        redirect ('kegiatan/edit_kegiatan/'.$id_kegiatan);
+
+    }
+
+    public function hapus_detail_kegiatan(){
+      $id_kegiatan=$this->input->post("id_kegiatan");
+      $id_detail_kegiatan=$this->input->post("id_detail_kegiatan");
+      $this->m_kegiatan->hapus_detail_kegiatan($id_detail_kegiatan);
+      $this->session->set_flashdata('hapus', 'Data Berhasil Di tambahkan');
+      redirect ('kegiatan/edit_kegiatan/'.$id_kegiatan);
     }
     public function pilih(){
         $bulan=$this->input->post('bulan');

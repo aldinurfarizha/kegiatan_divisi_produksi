@@ -88,8 +88,8 @@
 	<td><?php echo $kegiatan;?></td>
   <td><?php echo $waktu_kegiatan;?></td>
   <td><?php echo $output;?></td>
-  <td><center><?php echo anchor ('piutang/detail_piutang_agen/'.$id_kegiatan, ' <div class="btn bg-blue btn-sm"><i class ="fa fa-search"> Detail</i></div>')?></center></td>
-    <td><center><a class="btn btn-sm btn-warning" href="#editpelanggan<?php echo $id_kegiatan?>" data-toggle="modal" title="Edit"><span class="fa fa-edit"></span> Edit</a>
+  <td><center><?php echo anchor ('kegiatan/detail_kegiatan/'.$id_kegiatan, ' <div class="btn bg-blue btn-sm"><i class ="fa fa-search"> Detail</i></div>')?></center></td>
+    <td><center><?php echo anchor ('kegiatan/edit_kegiatan/'.$id_kegiatan, ' <div class="btn btn-warning btn-sm"><i class ="fa fa-edit"> Edit</i></div>')?>
     <a class="btn btn-sm btn-danger" href="#hapus<?php echo $id_kegiatan?>" data-toggle="modal" title="Hapus"><span class="fa fa-trash"></span> Hapus</a></td>
 	</center>
 	
@@ -110,6 +110,10 @@
 
 
 <br>
+
+</div>
+</div>
+</div>
 <?php 
                   
                   foreach ($data->result_array() as $sws){
@@ -151,9 +155,6 @@
             <?php
         }
         ?>
-</div>
-</div>
-</div>
 <!-- Modal Edit Pelanggan -->
 <footer class="main-footer">
   <div class="pull-right hidden-xs">
