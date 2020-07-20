@@ -1,4 +1,38 @@
-<center><h2>Rekapitulasi Laporan Kegiatan Bulanan Divisi Produksi PAM TIRTA KAMUNING KAB.KUNINGAN <br>Bulan <?php echo $bulan_ngaran." ".$tahun;?></h2><br></center>
+<style type="text/css" media="print">
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+}
+</style>    
+<body  onload="window.print()">                                                      
+<center><h2>Rekapitulasi Laporan Kegiatan Bulanan Divisi Produksi PAM TIRTA KAMUNING KAB.KUNINGAN <br>Bulan <?php 
+Switch ($bulan){
+    case 1 : $bulan="JANUARI";
+        Break;
+    case 2 : $bulan="FEBRUARI";
+        Break;
+    case 3 : $bulan="MARET";
+        Break;
+    case 4 : $bulan="APRIL";
+        Break;
+    case 5 : $bulan="MEI";
+        Break;
+    case 6 : $bulan="JUNI";
+        Break;
+    case 7 : $bulan="JULI";
+        Break;
+    case 8 : $bulan="AGUSTUS";
+        Break;
+    case 9 : $bulan="SEPTEMBER";
+        Break;
+    case 10 : $bulan="OKTOBER";
+        Break;
+    case 11 : $bulan="NOVEMBER";
+        Break;
+    case 12 : $bulan="DESEMBER";
+        Break;
+    } echo $bulan." ".$tahun ;
+                                                            ?></h2><br></center>
 <table cellspacing="1" bgcolor="#666666" cellpadding="2">
 <tr bgcolor="white">
     <th width="1%">No.</th>
@@ -53,3 +87,9 @@ foreach($kegiatan->result_array() as $source1){ ?>
 <th width="34%"><br><br><br><br><br><?php echo $nama_kasubdiv;?></th>
 <th width="36%"><br><br><br><br><br><?php echo $nama_pelaksana;?></th>
 </table>
+</body>
+<script type="text/javascript">   
+     $(window).load(function() {
+      window.print();
+    });
+</script>

@@ -27,7 +27,8 @@ class Dashboard extends CI_Controller {
             redirect('login');
         }
         else{
-			$this->load->view('admin/home');
+			$data['grafik']=$this->m_kegiatan->ambil_dashboard();
+			$this->load->view('admin/home',$data);
         }
 	}
 	public function filter(){

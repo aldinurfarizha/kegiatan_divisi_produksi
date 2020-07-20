@@ -77,5 +77,9 @@ class m_kegiatan extends CI_Model{
         $hsl=$this->db->query("SELECT * FROM detail_kegiatan where id_kegiatan='$id_kegiatan'");
         return $hsl;
       }
+      public function ambil_dashboard(){
+        $hsl=$this->db->query("SELECT MONTHNAME(waktu_kegiatan) as bulan,COUNT(id_kegiatan) as jumlah_kegiatan, MONTH(waktu_kegiatan) FROM kegiatan GROUP BY MONTHNAME(waktu_kegiatan) ORDER BY MONTH(waktu_kegiatan) ASC LIMIT 12");
+        return $hsl;
+      }
     }
 ?>

@@ -43,8 +43,8 @@ class m_laporan extends CI_Model{
         $hsl=$this->db->query("SELECT * FROM detail_kegiatan where MONTH(waktu_kegiatan)='$bulan' and YEAR(waktu_kegiatan)='$tahun'");
         return $hsl;
       }
-      public function report_custom(){
-        $hsl=$this->db->query("SELECT kegiatan.kegiatan, kegiatan.waktu_kegiatan, kegiatan.output, uraian_kegiatan, kendala, tindakan_lanjut, penanggung_jawab, indikator, keterangan FROM detail_kegiatan INNER JOIN kegiatan ON detail_kegiatan.id_kegiatan = kegiatan.id_kegiatan");
+      public function report_custom($bulan){
+        $hsl=$this->db->query("SELECT kegiatan.kegiatan, kegiatan.waktu_kegiatan, kegiatan.output, uraian_kegiatan, kendala, tindakan_lanjut, penanggung_jawab,penanggung_jawab2, penanggung_jawab3, penanggung_jawab4, penanggung_jawab5, indikator, keterangan FROM detail_kegiatan INNER JOIN kegiatan ON detail_kegiatan.id_kegiatan = kegiatan.id_kegiatan where MONTH(kegiatan.waktu_kegiatan)='$bulan'");
         return $hsl;
       }
     }
