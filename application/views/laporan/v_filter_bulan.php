@@ -40,15 +40,15 @@
        </div>
        <select name="bulan" id="zona" class="form-control select2" style="width: 100%;" required>
     <option selected value="<?php echo $tahun=date("m")?> "> <?php echo $tahun=date("F")?> </option>
-                <option value="1">Januari</option>
-                <option value="2">Februari</option>
-                <option value="3">Maret</option>
-                <option value="4">April</option>
-                <option value="5">Mei</option>
-                <option value="6">Juni</option>
-                <option value="7">Juli</option>
-                <option value="8">Agustus</option>
-                <option value="9">September</option>
+                <option value="01">Januari</option>
+                <option value="02">Februari</option>
+                <option value="03">Maret</option>
+                <option value="04">April</option>
+                <option value="05">Mei</option>
+                <option value="06">Juni</option>
+                <option value="07">Juli</option>
+                <option value="08">Agustus</option>
+                <option value="09">September</option>
                 <option value="10">Oktober</option>
                 <option value="11">November</option>
                 <option value="12">Desember</option>
@@ -102,6 +102,27 @@
                  
               </div>
               </div>
+
+              <div class="box-body">
+            <label for=""><i class="fa fa-sticky-note-o"></i> Pelaksana</label>
+                <div class="input-group col-lg-12">
+                <span class="input-group-addon">Nama</span>
+                <input type="text" name="nama_pelaksana" class="form-control" readonly value="<?php 
+                 foreach ($data->result_array() as $sws){
+                  $nama_kadiv=$sws['nama_pelaksana'];
+                echo $nama_kadiv;
+                 }?>" >
+                 <span class="input-group-addon">NIK</span>
+                <input type="text" name="nik_pelaksana" class="form-control" readonly value="<?php 
+                 foreach ($data->result_array() as $sws){
+                  $nama_kadiv=$sws['nik_pelaksana'];
+                echo $nama_kadiv;
+                 }?>" >
+                 
+              </div>
+              </div>
+
+              
               <br>
               <div class="col-sm-4"></div>
 			<input type="submit" class="btn btn-danger" value="CETAK (PDF)">
@@ -188,6 +209,25 @@
                 <input type="text" name="nik_kasubdiv" class="form-control" readonly value="<?php 
                  foreach ($data->result_array() as $sws){
                   $nama_kadiv=$sws['nik_kasubdiv'];
+                echo $nama_kadiv;
+                 }?>" >
+                 
+              </div>
+              </div>
+
+              <div class="box-body">
+            <label for=""><i class="fa fa-sticky-note-o"></i> Pelaksana</label>
+                <div class="input-group col-lg-12">
+                <span class="input-group-addon">Nama</span>
+                <input type="text" name="nama_pelaksana" class="form-control" readonly value="<?php 
+                 foreach ($data->result_array() as $sws){
+                  $nama_kadiv=$sws['nama_pelaksana'];
+                echo $nama_kadiv;
+                 }?>" >
+                 <span class="input-group-addon">NIK</span>
+                <input type="text" name="nik_pelaksana" class="form-control" readonly value="<?php 
+                 foreach ($data->result_array() as $sws){
+                  $nama_kadiv=$sws['nik_pelaksana'];
                 echo $nama_kadiv;
                  }?>" >
                  

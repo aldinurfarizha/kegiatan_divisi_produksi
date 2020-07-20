@@ -30,7 +30,21 @@ class m_laporan extends CI_Model{
         return $hsl;
       }
       public function tampil_struktur(){
-        $hsl=$this->db->query("SELECT * FORM struktur ");
+        $hsl=$this->db->query("SELECT * FROM struktur ");
+        return $hsl;
+      }
+
+      public function ambil_kegiatan_bulan($bulan,$tahun){
+        $hsl=$this->db->query("SELECT * FROM kegiatan where MONTH(waktu_kegiatan)='$bulan' and YEAR(waktu_kegiatan)='$tahun'");
+        return $hsl;
+      }
+
+      public function ambil_detail_kegiatan_bulan($bulan,$tahun){
+        $hsl=$this->db->query("SELECT * FROM detail_kegiatan where MONTH(waktu_kegiatan)='$bulan' and YEAR(waktu_kegiatan)='$tahun'");
+        return $hsl;
+      }
+      public function report_custom(){
+        $hsl=$this->db->query("SELECT kegiatan.kegiatan, kegiatan.waktu_kegiatan, kegiatan.output, uraian_kegiatan, kendala, tindakan_lanjut, penanggung_jawab, indikator, keterangan FROM detail_kegiatan INNER JOIN kegiatan ON detail_kegiatan.id_kegiatan = kegiatan.id_kegiatan");
         return $hsl;
       }
     }

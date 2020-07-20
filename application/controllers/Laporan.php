@@ -5,7 +5,7 @@ class Laporan extends CI_Controller{
  
     public function laporan_bulan()
     {
-    $data['data'] = $this->m_test->tampil_struktur();
+    $data['data'] = $this->m_laporan->tampil_struktur();
     $this->load->view('laporan/v_filter_bulan',$data);
     }
     public function laporan_rentang()
