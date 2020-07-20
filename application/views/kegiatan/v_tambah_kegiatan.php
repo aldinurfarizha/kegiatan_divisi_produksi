@@ -133,7 +133,16 @@
      <div class="input-group-addon">
           1.
        </div>
-     <input type="text" name="penanggung_jawab[]" id="penanggung_jawab" class="form-control" placeholder="Misal:Kepala Divisi Produksi" required>
+       <select name="penanggung_jawab[]" id="tahun" class="form-control" required>
+       <option selected="true" disabled="disabled">-- Pilih Penanggung Jawab --</option>  
+    <option value="Kepala Divisi Produksi">Kepala Divisi Produksi</>
+    <option value="Kasub.Div Kualitas Air">Kasub.Div Kualitas Air</option>
+    <option value="Kasub.Div Pengendalian Air Baku">Kasub.Div Pengendalian Air Baku</option>
+    <option value="Kasub.Div Pengadaan">Kasub.Div Pengadaan</option>
+    <option value="Kepala Divisi Trandist">Kepala Divisi Trandis</option>
+    <option value="Kepala Divisi Umum">Kepala Divisi Umum</option>
+    <option value="Kepala Divisi Litbang">Kepala Divisi Litbang</option>
+    </select>
     </div>
 </div>
 <div class="col-sm-6">
@@ -141,7 +150,16 @@
      <div class="input-group-addon">
           2.
        </div>
-      <input type="text" name="penanggung_jawab2[]" class="form-control" placeholder="Misal:Kasubdiv Kualitas Air">
+       <select name="penanggung_jawab2[]" id="tahun" class="form-control">
+       <option selected="true" disabled="disabled">-- Pilih Penanggung Jawab --</option>  
+    <option value="Kepala Divisi Produksi">Kepala Divisi Produksi</>
+    <option value="Kasub.Div Kualitas Air">Kasub.Div Kualitas Air</option>
+    <option value="Kasub.Div Pengendalian Air Baku">Kasub.Div Pengendalian Air Baku</option>
+    <option value="Kasub.Div Pengadaan">Kasub.Div Pengadaan</option>
+    <option value="Kepala Divisi Trandist">Kepala Divisi Trandis</option>
+    <option value="Kepala Divisi Umum">Kepala Divisi Umum</option>
+    <option value="Kepala Divisi Litbang">Kepala Divisi Litbang</option>
+    </select>
     </div>
     </div>
 </div>
@@ -152,7 +170,16 @@
      <div class="input-group-addon">
           3.
        </div>
-     <input type="text" name="penanggung_jawab3[]" class="form-control" placeholder="Misal:Kepala Divisi Produksi">
+       <select name="penanggung_jawab3[]" id="tahun" class="form-control">
+       <option selected="true" disabled="disabled">-- Pilih Penanggung Jawab --</option>  
+    <option value="Kepala Divisi Produksi">Kepala Divisi Produksi</>
+    <option value="Kasub.Div Kualitas Air">Kasub.Div Kualitas Air</option>
+    <option value="Kasub.Div Pengendalian Air Baku">Kasub.Div Pengendalian Air Baku</option>
+    <option value="Kasub.Div Pengadaan">Kasub.Div Pengadaan</option>
+    <option value="Kepala Divisi Trandist">Kepala Divisi Trandis</option>
+    <option value="Kepala Divisi Umum">Kepala Divisi Umum</option>
+    <option value="Kepala Divisi Litbang">Kepala Divisi Litbang</option>
+    </select>
     </div>
 </div>
 <div class="col-sm-6">
@@ -160,7 +187,16 @@
      <div class="input-group-addon">
           4.
        </div>
-      <input type="text" name="penanggung_jawab4[]" class="form-control" placeholder="Misal:Kasubdiv Kualitas Air">
+       <select name="penanggung_jawab4[]" id="tahun" class="form-control">
+       <option selected="true" disabled="disabled">-- Pilih Penanggung Jawab --</option>  
+    <option value="Kepala Divisi Produksi">Kepala Divisi Produksi</>
+    <option value="Kasub.Div Kualitas Air">Kasub.Div Kualitas Air</option>
+    <option value="Kasub.Div Pengendalian Air Baku">Kasub.Div Pengendalian Air Baku</option>
+    <option value="Kasub.Div Pengadaan">Kasub.Div Pengadaan</option>
+    <option value="Kepala Divisi Trandist">Kepala Divisi Trandis</option>
+    <option value="Kepala Divisi Umum">Kepala Divisi Umum</option>
+    <option value="Kepala Divisi Litbang">Kepala Divisi Litbang</option>
+    </select>
     </div>
     </div>
 </div>
