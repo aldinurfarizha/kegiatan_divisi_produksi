@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 20 Jul 2020 pada 06.36
+-- Waktu pembuatan: 21 Jul 2020 pada 03.28
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.0.33
 
@@ -56,7 +56,8 @@ INSERT INTO `detail_kegiatan` (`id_detail_kegiatan`, `id_kegiatan`, `uraian_kegi
 (36, 28, 'Laporan Bulanan Kublikasi penggunaan sumber mata air yang berasal dari air permukaan dan mata air yang di gunakan PDAM', '-', '-', 'Kepala divisi Produksi', 'Kasub div Kualitas Air', '', '', '', '', '100%', '-', '0000-00-00'),
 (37, 29, 'Pemasangan drum ponton secara berkala di waduk darma', '-', '-', 'Kepala divisi produksi', 'Kasubdiv Kualitas air', 'kasubdiv pengendalian air baku', '', '', '', '100%', '-', '0000-00-00'),
 (38, 30, 'Percobaan Menanam Jagung', '-', '-', 'ASD', '', '', '', '', '', '100%', '-', '0000-00-00'),
-(39, 31, 'Melak Cangkeng', '-', '-', 'DSAD', '', '', '', '', '', '100%', '-', '0000-00-00');
+(39, 31, 'Melak Cangkeng', '-', '-', 'DSAD', '', '', '', '', '', '100%', '-', '0000-00-00'),
+(40, 32, 'monitoring dan pemeliharaan reservoir', '-', 'hasil laporan pekerjaan dijadikan bahan evaluasi', 'Kepala Divisi Produksi', 'Kasubdiv pengendalian air baku', '', '', '', '', '100%', '-', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -68,19 +69,21 @@ CREATE TABLE `kegiatan` (
   `id_kegiatan` int(100) NOT NULL,
   `kegiatan` text NOT NULL,
   `waktu_kegiatan` date NOT NULL,
-  `output` text NOT NULL
+  `output` text NOT NULL,
+  `waktu_kegiatan2` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `kegiatan`
 --
 
-INSERT INTO `kegiatan` (`id_kegiatan`, `kegiatan`, `waktu_kegiatan`, `output`) VALUES
-(27, 'Koordinasi dengan Kelurahan Winduhaji', '2020-07-16', 'Pemeliharaan Sumber air IPA Surakatiga'),
-(28, 'Laporan Pemakaian Air ke UPTD PSDA', '2020-07-18', 'Hasil berupa Pajak air yang harus di bayarkan oleh PDAM'),
-(29, 'Pemasangan Drum Ponton', '2020-07-18', '-'),
-(30, 'Percobaan', '2020-06-19', 'Percobaan Menanam Jagung'),
-(31, 'Percobaan Melak Cangkeng', '2020-05-22', 'Percobaan Melak Cangkeng');
+INSERT INTO `kegiatan` (`id_kegiatan`, `kegiatan`, `waktu_kegiatan`, `output`, `waktu_kegiatan2`) VALUES
+(27, 'Koordinasi dengan Kelurahan Winduhaji', '2020-07-16', 'Pemeliharaan Sumber air IPA Surakatiga', '0000-00-00'),
+(28, 'Laporan Pemakaian Air ke UPTD PSDA', '2020-07-18', 'Hasil berupa Pajak air yang harus di bayarkan oleh PDAM', '0000-00-00'),
+(29, 'Pemasangan Drum Ponton', '2020-07-18', '-', '0000-00-00'),
+(30, 'Percobaan', '2020-06-19', 'Percobaan Menanam Jagung', '0000-00-00'),
+(31, 'Percobaan Melak Cangkeng', '2020-05-22', 'Percobaan Melak Cangkeng', '0000-00-00'),
+(32, 'Monitoring reservoir linggar jati', '2020-07-22', '-', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -162,13 +165,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_kegiatan`
 --
 ALTER TABLE `detail_kegiatan`
-  MODIFY `id_detail_kegiatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_detail_kegiatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_kegiatan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

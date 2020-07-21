@@ -60,7 +60,7 @@ foreach($kegiatan->result_array() as $source1){ ?>
         ?>
         <td rowspan="<?php echo $total_source2 ?>"><?php echo $no; ?></td>
         <td rowspan="<?php echo $total_source2 ?>"><?php echo $source1['kegiatan']; ?></td>
-        <td rowspan="<?php echo $total_source2 ?>"><center><?php echo $source1['waktu_kegiatan']; ?></center></td>
+        <td rowspan="<?php echo $total_source2 ?>"><center><?php if($source1['waktu_kegiatan2']=="0000-00-00"){echo $source1['waktu_kegiatan'];}else{ echo $source1['waktu_kegiatan']." s/d ".$source1['waktu_kegiatan2'];} ?></center></td>
         <td rowspan="<?php echo $total_source2 ?>"><?php echo $source1['output']; ?></td>
         <?php $asad=0; foreach($source3 as $source3){ $asad++;?>
           <td bgcolor="white"><?php echo $asad.". ";?></td>
@@ -83,9 +83,14 @@ foreach($kegiatan->result_array() as $source1){ ?>
 </tr>
 <br>
 <br>
-<th width="30%"><br><br><br><br><br><?php echo $nama_kadiv;?></th>
-<th width="34%"><br><br><br><br><br><?php echo $nama_kasubdiv;?></th>
-<th width="36%"><br><br><br><br><br><?php echo $nama_pelaksana;?></th>
+<th width="30%"><br><br><br><br><br><u><?php echo $nama_kadiv;?></u></th>
+<th width="34%"><br><br><br><br><br><u><?php echo $nama_kasubdiv;?></u></th>
+<th width="36%"><br><br><br><br><br><u><?php echo $nama_pelaksana;?></u></th>
+<tr>
+<th width="30%"><?php echo "NIK. ".$nik_kadiv;?></u></th>
+<th width="34%"><?php echo "NIK. ".$nik_kasubdiv;?></u></th>
+<th width="36%"><?php echo "NIK. ".$nik_pelaksana;?></u></th>
+</tr>
 </table>
 </body>
 <script type="text/javascript">   

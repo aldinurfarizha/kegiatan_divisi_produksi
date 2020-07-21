@@ -27,9 +27,21 @@ class Kegiatan extends CI_Controller{
 
 
     }
+
+    public function proses_edit_kegiatan(){
+      $id_kegiatan=$this->input->post("id_kegiatan");
+      $kegiatan=$this->input->post("kegiatan");
+      $waktu_kegiatan=$this->input->post("waktu_kegiatan");
+      $waktu_kegiatan2=$this->input->post("waktu_kegiatan2");
+      $output=$this->input->post("output");
+      $this->m_kegiatan->kegiatan_edit($id_kegiatan, $kegiatan, $waktu_kegiatan, $waktu_kegiatan2, $output);
+      $this->session->set_flashdata('edit', 'Data Berhasil Di tambahkan');
+      redirect ('kegiatan/edit_kegiatan/'.$id_kegiatan);
+    }
     public function insert_kegiatan(){
         $kegiatan=$this->input->post("kegiatan");
         $waktu_kegiatan=$this->input->post("waktu_kegiatan");
+        $waktu_kegiatan2=$this->input->post("waktu_kegiatan2");
         $output=$this->input->post("output");
         $uraian_kegiatan=$this->input->post("uraian_kegiatan");
         $kendala=$this->input->post("kendala");
@@ -42,7 +54,7 @@ class Kegiatan extends CI_Controller{
         $penanggung_jawab5=$this->input->post("penanggung_jawab5");
         $penanggung_jawab6=$this->input->post("penanggung_jawab6");
         $keterangan=$this->input->post("keterangan");
-        $this->m_kegiatan->tambah_kegiatan($kegiatan, $waktu_kegiatan, $output, $uraian_kegiatan, $kendala, $tindak_lanjut, $penanggung_jawab, $penanggung_jawab2,$penanggung_jawab3, $penanggung_jawab4, $penanggung_jawab5, $penanggung_jawab6,$indikators, $keterangan);
+        $this->m_kegiatan->tambah_kegiatan($kegiatan, $waktu_kegiatan, $output, $uraian_kegiatan, $kendala, $tindak_lanjut, $penanggung_jawab, $penanggung_jawab2,$penanggung_jawab3, $penanggung_jawab4, $penanggung_jawab5, $penanggung_jawab6,$indikators, $keterangan, $waktu_kegiatan2);
     }
     public function tambah_detail_kegiatan(){
       $id_kegiatan=$this->input->post("id_kegiatan");

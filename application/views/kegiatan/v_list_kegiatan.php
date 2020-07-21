@@ -65,6 +65,7 @@
 	<th width="1%">NO.</th>
     <th width="24%"><i class="fa fa-wrench"></i> Kegiatan</th>
 	<th width="16%"><i class="fa fa-calendar"></i> Waktu Kegiatan</th>
+  <th width="16%"><i class="fa fa-calendar"></i> Hingga</th>
 	<th width="16%" ><i class="fa fa-check-circle-o"></i> Sasaran/Output</th>
     <th width="10%" ><i class="fa fa-search"></i> Lihat</th>
   <th width="16%"><i class="fa fa-gears"></i> Aksi</th>
@@ -80,6 +81,7 @@
                         $kegiatan=$sws['kegiatan'];
                         $waktu_kegiatan=$sws['waktu_kegiatan'];
                         $output=$sws['output'];
+                        $waktu_kegiatan2=$sws['waktu_kegiatan2'];
                         
                         
                 ?>
@@ -87,6 +89,7 @@
 	<td class="count"><?php echo $no;?></td>
 	<td><?php echo $kegiatan;?></td>
   <td><?php echo $waktu_kegiatan;?></td>
+  <td><?php if($waktu_kegiatan2=="0000-00-00"){ echo $waktu_kegiatan."(1 Hari)";} else{ echo $waktu_kegiatan2;};?></td>
   <td><?php echo $output;?></td>
   <td><center><?php echo anchor ('kegiatan/detail_kegiatan/'.$id_kegiatan, ' <div class="btn bg-blue btn-sm"><i class ="fa fa-search"> Detail</i></div>')?></center></td>
     <td><center><?php echo anchor ('kegiatan/edit_kegiatan/'.$id_kegiatan, ' <div class="btn btn-warning btn-sm"><i class ="fa fa-edit"> Edit</i></div>')?>

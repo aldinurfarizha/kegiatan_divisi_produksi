@@ -2,7 +2,7 @@
 
 class m_kegiatan extends CI_Model{
 
-    public function tambah_kegiatan($kegiatan, $waktu_kegiatan, $output, $uraian_kegiatan, $kendala, $tindak_lanjut, $penanggung_jawab, $penanggung_jawab2,$penanggung_jawab3, $penanggung_jawab4, $penanggung_jawab5, $penanggung_jawab6,$indikators, $keterangan){
+    public function tambah_kegiatan($kegiatan, $waktu_kegiatan, $output, $uraian_kegiatan, $kendala, $tindak_lanjut, $penanggung_jawab, $penanggung_jawab2,$penanggung_jawab3, $penanggung_jawab4, $penanggung_jawab5, $penanggung_jawab6,$indikators, $keterangan,$waktu_kegiatan2){
       $kode=$this->db->query("SELECT max(id_kegiatan) as no_kegiatan FROM kegiatan");
       foreach ($kode->result() as $row)
       {
@@ -13,7 +13,7 @@ class m_kegiatan extends CI_Model{
       {
       $no_kegiatan=1;
       }
-      $pertama=$this->db->query("INSERT INTO kegiatan (id_kegiatan, kegiatan, waktu_kegiatan, output) VALUES ('$no_kegiatan', '$kegiatan', '$waktu_kegiatan','$output')");
+      $pertama=$this->db->query("INSERT INTO kegiatan (id_kegiatan, kegiatan, waktu_kegiatan, output, waktu_kegiatan2) VALUES ('$no_kegiatan', '$kegiatan', '$waktu_kegiatan','$output','$waktu_kegiatan2')");
       $number = count($uraian_kegiatan);
       for($i=0; $i<$number; $i++)  
                  {  
@@ -79,6 +79,10 @@ class m_kegiatan extends CI_Model{
       }
       public function ambil_dashboard(){
         $hsl=$this->db->query("SELECT MONTHNAME(waktu_kegiatan) as bulan,COUNT(id_kegiatan) as jumlah_kegiatan, MONTH(waktu_kegiatan) FROM kegiatan GROUP BY MONTHNAME(waktu_kegiatan) ORDER BY MONTH(waktu_kegiatan) ASC LIMIT 12");
+        return $hsl;
+      }
+      public function kegiatan_edit($id_kegiatan, $kegiatan, $waktu_kegiatan, $waktu_kegiatan2, $output){
+        $hsl=$this->db->query("UPDATE kegiatan set kegiatan='$kegiatan', waktu_kegiatan='$waktu_kegiatan', waktu_kegiatan2='$waktu_kegiatan2', output='$output' WHERE id_kegiatan='$id_kegiatan'");
         return $hsl;
       }
     }

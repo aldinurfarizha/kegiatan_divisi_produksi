@@ -19,11 +19,13 @@
   $kegiatan;
   $waktu_kegiatan;
   $output;
+  $waktu_kegiatan2;
                    foreach ($kegiatan->result_array() as $sws){
                     $id_kegiatan=$sws['id_kegiatan'];
                     $kegiatan=$sws['kegiatan'];
                     $waktu_kegiatan=$sws['waktu_kegiatan'];
                     $output=$sws['output'];
+                    $waktu_kegiatan2=$sws['waktu_kegiatan2'];
                    }?>
     <?php if($this->session->flashdata('berhasil') == TRUE):?>
 	<div class="alert alert-success alert-dismissible" role="alert">
@@ -59,7 +61,7 @@
               <br>
               <input type="button" class="btn btn-success" value=" < Kembali" onclick="history.back()"/> 
              
-<form id="kegiatan">
+              <form method="post" action="<?php echo base_url().'kegiatan/proses_edit_kegiatan'?>">
 <br>
   <div class="row">
           <div class="col-md-9">
@@ -69,7 +71,7 @@
               </div>
              
                 <div class="box-body">
-             
+             <input type="hidden" name="id_kegiatan" value="<?php echo $id_kegiatan;?>">
    <label>Kegiatan</label>
    <div class="input-group col-lg-12">
     <div class="input-group-addon">
@@ -85,7 +87,11 @@
     <div class="input-group-addon">
            <span class="fa fa-calendar"></span>
        </div>
-       <input type="date" class="form-control" name="waktu_kegiatan" id="waktu_kegiatan" autocomplete="off" value="<?php echo $waktu_kegiatan;?>" >
+       <input type="date" class="form-control" name="waktu_kegiatan" id="waktu_kegiatan" autocomplete="off" value="<?php echo $waktu_kegiatan;?>" required>
+       <div class="input-group-addon">
+           <span>Hingga</span>
+       </div>
+       <input type="date" class="form-control" name="waktu_kegiatan2" id="waktu_kegiatan" autocomplete="off" value="<?php if($waktu_kegiatan2=="0000-00-00"){}else{echo $waktu_kegiatan2;};?>">
    </div>
 
    <label>Sasaran / Output</label>
@@ -96,6 +102,7 @@
        <input type="text" class="form-control" name="output" id="output" autocomplete="off" value="<?php echo $output;?>" >
    </div>
     <br>
+    <center><button type="submit" value="simpan" class="btn btn-success">SIMPAN</button></center>
                         </div>
                 </div>
             </div>
