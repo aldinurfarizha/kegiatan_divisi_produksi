@@ -20,12 +20,14 @@
   $waktu_kegiatan;
   $output;
   $waktu_kegiatan2;
+  $file;
                    foreach ($kegiatan->result_array() as $sws){
                     $id_kegiatan=$sws['id_kegiatan'];
                     $kegiatan=$sws['kegiatan'];
                     $waktu_kegiatan=$sws['waktu_kegiatan'];
                     $output=$sws['output'];
                     $waktu_kegiatan2=$sws['waktu_kegiatan2'];
+                    $file=$sws['FILE'];
                    }?>
     <?php if($this->session->flashdata('berhasil') == TRUE):?>
 	<div class="alert alert-success alert-dismissible" role="alert">
@@ -56,13 +58,15 @@
   </section>
   <section class="content">
   <div class="callout callout-info">
-                <h4><i class="fa fa-edit"></i> Halaman Edit Kegiatan</h4>
+                <h4><i class="fa fa-edit"></i> Halaman Tambah, Edit Uraian Kegiatan</h4>
               </div>
               <br>
-              <input type="button" class="btn btn-success" value=" < Kembali" onclick="history.back()"/> 
+              <a href="<?php echo base_url()."kegiatan/list_kegiatan/".$bulan."/".$tahun?>"><div class="btn btn-lg btn-success">< Kembali</div></a>
              
-              <form method="post" action="<?php echo base_url().'kegiatan/proses_edit_kegiatan'?>">
+              <form method="post" enctype="multipart/form-data" action="<?php echo base_url().'kegiatan/proses_edit_kegiatan'?>">
 <br>
+<input type="hidden" name="bulan" value="<?php echo $bulan?>">
+        <input type="hidden" name="tahun" value="<?php echo $tahun?>">
   <div class="row">
           <div class="col-md-9">
             <div class="box box-info">
@@ -101,6 +105,15 @@
        </div>
        <input type="text" class="form-control" name="output" id="output" autocomplete="off" value="<?php echo $output;?>" >
    </div>
+   <label>Foto Dokumentasi (Kosongkan Apabila tidak di ganti)</label>
+   <div class="input-group col-lg-12">
+    <div class="input-group-addon">
+           <span class="fa fa-camera"></span>
+       </div>
+       <input type="file" class="form-control" name="picture" id="picture" autocomplete="off">
+   </div>
+   <br>
+   <p align="center"><a href="<?php echo base_url('assets/uploads/dokumentasi/').$file ?>"> <img src="<?php echo base_url('assets/uploads/dokumentasi/').$file ?>" alt="<?php echo $file;?>" height="100px"></a></p>
     <br>
     <center><button type="submit" value="simpan" class="btn btn-success">SIMPAN</button></center>
                         </div>
@@ -110,14 +123,16 @@
             <div class="col-md-12">
     <div class="box box-primary">
     <div class="box-header with-border">
+    <h3 class="text-center">Uraian Kegiatan</h3>
 <p align="right">
-     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus-circle"></i> Tambah Detail Kegiatan</button>
+     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus-circle"></i> Tambah Uraian Kegiatan</button>
      </p>
      
 
     </div>
     <form action="<?=site_url('print_laporan/cetak_pelanggan')?>" class="form-horizontal" method="post">
     <div class="box-body">
+    
     <table class="table table-striped table-bordered data" style="width:100%">
     <thead>
 	
@@ -231,11 +246,12 @@
                     <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title" id="myModalLabel"><i class="fa fa-trash"></i> Hapus Data Detail Kegiatan Ini ?</h3>
+                        <h3 class="modal-title" id="myModalLabel"><i class="fa fa-trash"></i> Hapus Data Uraian Kegiatan Ini ?</h3>
                     </div>
                     <form class="form-horizontal" method="post" action="<?php echo base_url().'kegiatan/hapus_detail_kegiatan'?>">
                         <div class="modal-body">
-                           
+                        <input type="hidden" name="bulan" value="<?php echo $bulan?>">
+        <input type="hidden" name="tahun" value="<?php echo $tahun?>">
                             <br>
                                    <input name="id_detail_kegiatan" type="hidden" value="<?php echo $id_detail_kegiatan; ?>"> 
                                    <input name="id_kegiatan" type="hidden" value="<?php echo $id_kegiatan; ?>"> 
@@ -263,7 +279,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i> Tambah Detail Kegiatan</h1>
+        <h1 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus"></i> Tambah Uraian Kegiatan</h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -271,6 +287,8 @@
       <div class="modal-body">
       <form autocomplete="off" method="post" action="<?php echo base_url().'kegiatan/tambah_detail_kegiatan'; ?>">
 		<div class="form-group">
+    <input type="hidden" name="bulan" value="<?php echo $bulan?>">
+        <input type="hidden" name="tahun" value="<?php echo $tahun?>">
     <input type="hidden" name="id_kegiatan" class="form-control" value="<?php echo $id_kegiatan;?>">
     <label><i class="fa fa-list"></i> Uraian Kegiatan</label>
     <div class="input-group col-lg-8">
@@ -290,6 +308,7 @@
     <label><i class="fa fa-percent"></i> Indikator</label>
     <div class="input-group col-lg-8">
 		<select name="indikator" class="form-control" required>
+    <option selected="true" disabled="disabled">-- Pilih Indikator --</option>  
     <option value="100%">100%</option>
     <option value="90%">90%</option>
     <option value="80%">80%</option>
@@ -306,15 +325,42 @@
     
     <label> <i class="fa fa-user-circle"></i> Penanggung Jawab</label>
     <div class="input-group col-lg-8">
-    <input type="text" name="penanggung_jawab" class="form-control" required>
+    <select name="penanggung_jawab" class="form-control">
+       <option selected="true" disabled="disabled">-- Pilih Penanggung Jawab --</option>  
+    <option value="Kepala Divisi Produksi">Kepala Divisi Produksi</>
+    <option value="Kasub.Div Kualitas Air">Kasub.Div Kualitas Air</option>
+    <option value="Kasub.Div Pengendalian Air Baku">Kasub.Div Pengendalian Air Baku</option>
+    <option value="Kasub.Div Pengadaan">Kasub.Div Pengadaan</option>
+    <option value="Kepala Divisi Trandist">Kepala Divisi Trandis</option>
+    <option value="Kepala Divisi Umum">Kepala Divisi Umum</option>
+    <option value="Kepala Divisi Litbang">Kepala Divisi Litbang</option>
+    </select>
     </div>
     <label> <i class="fa fa-user-circle"></i> Penanggung Jawab 2</label>
     <div class="input-group col-lg-8">
-    <input type="text" name="penanggung_jawab2" class="form-control">
+    <select name="penanggung_jawab2" class="form-control">
+    <option selected="true" disabled="disabled">-- Pilih Penanggung Jawab --</option>  
+    <option value="Kepala Divisi Produksi">Kepala Divisi Produksi</>
+    <option value="Kasub.Div Kualitas Air">Kasub.Div Kualitas Air</option>
+    <option value="Kasub.Div Pengendalian Air Baku">Kasub.Div Pengendalian Air Baku</option>
+    <option value="Kasub.Div Pengadaan">Kasub.Div Pengadaan</option>
+    <option value="Kepala Divisi Trandist">Kepala Divisi Trandis</option>
+    <option value="Kepala Divisi Umum">Kepala Divisi Umum</option>
+    <option value="Kepala Divisi Litbang">Kepala Divisi Litbang</option>
+    </select>
     </div>
     <label> <i class="fa fa-user-circle"></i> Penanggung Jawab3</label>
     <div class="input-group col-lg-8">
-    <input type="text" name="penanggung_jawab3" class="form-control">
+    <select name="penanggung_jawab3" class="form-control">
+       <option selected="true" disabled="disabled">-- Pilih Penanggung Jawab --</option>  
+    <option value="Kepala Divisi Produksi">Kepala Divisi Produksi</>
+    <option value="Kasub.Div Kualitas Air">Kasub.Div Kualitas Air</option>
+    <option value="Kasub.Div Pengendalian Air Baku">Kasub.Div Pengendalian Air Baku</option>
+    <option value="Kasub.Div Pengadaan">Kasub.Div Pengadaan</option>
+    <option value="Kepala Divisi Trandist">Kepala Divisi Trandis</option>
+    <option value="Kepala Divisi Umum">Kepala Divisi Umum</option>
+    <option value="Kepala Divisi Litbang">Kepala Divisi Litbang</option>
+    </select>
     </div>
     <label> <i class="fa fa-user-circle"></i> Penanggung Jawab4</label>
     <div class="input-group col-lg-8">
@@ -384,6 +430,8 @@
       
     
 			<div class="form-group">
+      <input type="hidden" name="bulan" value="<?php echo $bulan?>">
+        <input type="hidden" name="tahun" value="<?php echo $tahun?>">
       <input type="hidden" name="id_kegiatan" class="form-control" value="<?php echo $id_kegiatan;?>">
     <input type="hidden" name="id_detail_kegiatan" class="form-control" value="<?php echo $id_detail_kegiatan;?>">
     <label><i class="fa fa-list"></i> Uraian Kegiatan</label>

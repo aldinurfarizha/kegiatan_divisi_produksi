@@ -44,16 +44,15 @@
   <section class="content">
          
         <div class="row">
-        <div class="col-md-3"></div>
-          <div class="col-md-6">
+          <div class="col-md-9" style="float:none;margin:auto;">
             <div class="box box-info">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-calendar"></i> Pilih Waktu</h3>
+                <h3 class="box-title"><i class="fa fa-calendar"></i> Pilih Waktu Untuk Melihat atau Menambah data Kegiatan</h3>
               </div>
               <form method="post" class="form-horizontal" enctype="multipart/form-data" action="<?php echo base_url().'kegiatan/pilih' ?>">
                 <div class="box-body">
 <label><i class="fa fa-calendar"></i> Bulan</label>
-    <div class="input-group col-lg-6">
+
     <select name="bulan" id="bulan" class="form-control" required>
     <option disabled selected value> -- Pilih Bulan -- </option>
     <option value="01">Januari</option>
@@ -69,9 +68,8 @@
                 <option value="11">November</option>
                 <option value="12">Desember</option>
     </select>
-    </div>
+
     <label> <i class="fa fa-calendar"></i> Tahun</label>
-    <div class="input-group col-lg-6">
     <select name="tahun" id="tahun" class="form-control" required>
     <option disabled selected value> -- Pilih Tahun -- </option>
     <option value="2019">2019</option>
@@ -87,7 +85,7 @@
     <option value="2029">2029</option>
     <option value="2030">2030</option>
     </select>
-    </div>
+
 
                 
 
@@ -97,7 +95,7 @@
                
 
                         </div>
-                  <center><input type="submit" class="btn btn-success" value="Pilih" /></center>
+                  <center><input type="submit" class="btn btn-lg btn-success" value="Pilih"/></center>
                         </br>
                 </div>
                        

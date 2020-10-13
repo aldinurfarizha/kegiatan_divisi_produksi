@@ -14,6 +14,12 @@ class m_laporan extends CI_Model{
           WHERE MONTH(tgl)='$bulan' and YEAR(tgl)='$tahun'")->result();
         return $hsl;
       }
+      public function cetak_foto($bulan,$tahun){
+        $hsl=$this->db->query("SELECT kegiatan,file
+        FROM kegiatan
+        WHERE MONTH(waktu_kegiatan)='$bulan' and YEAR(waktu_kegiatan)='$tahun' ORDER BY waktu_kegiatan ASC");
+        return $hsl;
+      }
 
       public function cetak_rentang_bulanan($bulan,$tahun,$bulanakhir,$tahunakhir){
         $awal=$tahun.$bulan."01";
@@ -35,7 +41,7 @@ class m_laporan extends CI_Model{
       }
 
       public function ambil_kegiatan_bulan($bulan,$tahun){
-        $hsl=$this->db->query("SELECT * FROM kegiatan where MONTH(waktu_kegiatan)='$bulan' and YEAR(waktu_kegiatan)='$tahun'");
+        $hsl=$this->db->query("SELECT * FROM kegiatan where MONTH(waktu_kegiatan)='$bulan' and YEAR(waktu_kegiatan)='$tahun' ORDER BY waktu_kegiatan ASC");
         return $hsl;
       }
 

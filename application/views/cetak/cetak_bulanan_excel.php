@@ -88,7 +88,7 @@ include APPPATH.'third_party/PHPExcel/PHPExcel.php';
                                                             }
             
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="REKAPITULASI LAPORAN KEGIATAN "'.$bulan_nama.'"_"'.$tahun.'".csv"'); // Set nama file excel nya
+        header('Content-Disposition: attachment; filename="REKAPITULASI LAPORAN KEGIATAN "'.$bulan_nama.'"_"'.$tahun.'".xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
         $write = new PHPExcel_Writer_CSV($csv);
         $write->save('php://output');

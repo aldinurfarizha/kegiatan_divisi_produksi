@@ -27,7 +27,7 @@
     <div class="col-md-6">
             <div class="box box-info">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-book"></i> Laporan Dalam Bentuk PDF</h3>
+                <h3 class="box-title"><i class="fa fa-book"></i> Laporan Dalam Bentuk Mentah (Copy-Paste)</h3>
               </div>
                 <div class="box-body">
                 <div class="form-group">
@@ -124,8 +124,8 @@
 
               
               <br>
-              <div class="col-sm-4"></div>
-			<input type="submit" class="btn btn-danger" value="CETAK (PDF)">
+              <div class="col-sm-4">*Jika Bentuk Table Rusak Pastikan setiap kegiatan memiliki deskripsi/uraian kegiatan</div>
+			<input type="submit" class="btn btn-danger" value="CETAK">
      
 		</form>
     </div>
@@ -139,12 +139,12 @@
           <div class="col-md-6">
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-calculator"></i> Laporan Dalam Bentuk Excell</h3>
+                <h3 class="box-title"><i class="fa fa-photo"></i> Laporan Foto Dokumentasi Bentuk Mentah (Copy Paste)</h3>
               </div>
                 <div class="box-body">
                 <div class="form-group">
                 <div class="form-group">
-    <form action="<?=site_url('cetak/cetak_bulanan_excel')?>" method="post">
+    <form action="<?=site_url('cetak/cetak_bulanan_foto')?>" method="post">
    <label>Bulan</label>
    <div class="input-group date">
     <div class="input-group-addon">
@@ -235,7 +235,7 @@
               </div>
               <br>
               <div class="col-sm-4"></div>
-			<input type="submit" class="btn btn-success" value="CETAK (EXCELL)">
+			<input type="submit" class="btn btn-success" value="CETAK">
      
 		</form>
     </div>

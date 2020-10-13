@@ -18,10 +18,12 @@
   $kegiatan;
   $waktu_kegiatan;
   $output;
+  $file;
                    foreach ($kegiatan->result_array() as $sws){
                     $kegiatan=$sws['kegiatan'];
                     $waktu_kegiatan=$sws['waktu_kegiatan'];
                     $output=$sws['output'];
+                    $file=$sws['file'];
                    }?>
     <?php if($this->session->flashdata('berhasil') == TRUE):?>
 	<div class="alert alert-success alert-dismissible" role="alert">
@@ -92,6 +94,8 @@
        </div>
        <input type="text" class="form-control" name="output" id="output" autocomplete="off" value="<?php echo $output;?>" readonly>
    </div>
+    <br>
+    <p align="center"><a href="<?php echo base_url('assets/uploads/dokumentasi/').$file ?>"> <img src="<?php echo base_url('assets/uploads/dokumentasi/').$file ?>" alt="<?php echo $file;?>" height="100px"></a></p>
     <br>
                         </div>
                 </div>

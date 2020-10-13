@@ -17,25 +17,14 @@
         </a>
       </li>
 
-      <li class="treeview <?php if($this->uri->segment('1')=='kegiatan') { echo"active menu-open" ;}?>">
-        <a href="#">
-          <i class="fa fa-wrench"></i>
-          <span>Kegiatan</span>
+   
+      <li class="<?php if($this->uri->segment('1')=='kegiatan') { echo"active" ;}?>">
+        <a href="<?php echo base_url('kegiatan/data_kegiatan') ?>">
+          <i class="fa fa-list"></i> <span>Lihat / Tambah Data Kegiatan</span>
           <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-        <ul class="treeview-menu">
-        <li class="<?php if($this->uri->segment('2')=='tambah_kegiatan') { echo"active" ;}?>"><a href="<?php echo base_url('kegiatan/tambah_kegiatan') ?>"><i class="fa fa-plus"></i>Tambah Data Kegiatan</a></li>
-          <li class="<?php if($this->uri->segment('2')=='data_kegiatan') { echo"active" ;}?>"><a href="<?php echo base_url('kegiatan/data_kegiatan') ?>"><i class="fa fa-list"></i> Data Kegiatan</a></li>
-
-          
- 
-        </ul>
       </li>
-      
-
-
       
 
       <li class="treeview <?php if($this->uri->segment('1')=='laporan') { echo"active menu-open" ;}?>">

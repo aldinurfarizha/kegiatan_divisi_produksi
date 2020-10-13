@@ -5,7 +5,7 @@
 }
 </style>    
 <body  onload="window.print()">                                                      
-<center><h2>Rekapitulasi Laporan Kegiatan Bulanan Divisi Produksi PAM TIRTA KAMUNING KAB.KUNINGAN <br>Bulan <?php 
+<center><h2>Rekapitulasi Laporan Kegiatan Bulanan Divisi Produksi PAM Tirta Kamuning KAB.Kuningan <br>Bulan <?php 
 Switch ($bulan){
     case 1 : $bulan="JANUARI";
         Break;
@@ -39,7 +39,7 @@ Switch ($bulan){
     <th width="10%">KEGIATAN</th>
     <th width="5%">WAKTU KEGIATAN</th>
     <th width="10%">SASARAN/OUTPUT</th>
-    <th width="1%"></th>
+    <th style="white-space:nowrap" width="1%"></th>
     <th width="25%">URAIAN KEGIATAN</th>
     <th width="10%">KENDALA</th>
     <th width="15%">TINDAK LANJUT YANG DI PERLUKAN</th>
@@ -60,7 +60,7 @@ foreach($kegiatan->result_array() as $source1){ ?>
         ?>
         <td rowspan="<?php echo $total_source2 ?>"><?php echo $no; ?></td>
         <td rowspan="<?php echo $total_source2 ?>"><?php echo $source1['kegiatan']; ?></td>
-        <td rowspan="<?php echo $total_source2 ?>"><center><?php if($source1['waktu_kegiatan2']=="0000-00-00"){echo $source1['waktu_kegiatan'];}else{ echo $source1['waktu_kegiatan']." s/d ".$source1['waktu_kegiatan2'];} ?></center></td>
+        <td rowspan="<?php echo $total_source2 ?>"><center><?php if($source1['waktu_kegiatan2']=="0000-00-00"){echo date('d-m-Y', strtotime($source1['waktu_kegiatan']));}else{ echo date('d-m-Y', strtotime($source1['waktu_kegiatan']))." s/d ".date('d-m-Y', strtotime($source1['waktu_kegiatan2']));} ?></center></td>
         <td rowspan="<?php echo $total_source2 ?>"><?php echo $source1['output']; ?></td>
         <?php $asad=0; foreach($source3 as $source3){ $asad++;?>
           <td bgcolor="white"><?php echo $asad.". ";?></td>

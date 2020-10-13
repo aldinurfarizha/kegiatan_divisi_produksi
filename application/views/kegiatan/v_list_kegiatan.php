@@ -43,14 +43,13 @@
 
 </form>
 
+<center><h2>Data Kegiatan Bulan <?php echo $nama_bulan." Tahun ".$tahun?> </h2></center>
 	
 	<br>
     <div class="col-md-12">
     <div class="box box-primary">
     <div class="box-header with-border">
-  <label><?php echo $bulan." ".$tahun?></label>
-<p align="right">
-     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus-circle"></i> Tambah Data</button>
+     <p align="right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus-circle"></i> Tambah Data</button>
      </p>
      
 
@@ -67,7 +66,7 @@
 	<th width="16%"><i class="fa fa-calendar"></i> Waktu Kegiatan</th>
   <th width="16%"><i class="fa fa-calendar"></i> Hingga</th>
 	<th width="16%" ><i class="fa fa-check-circle-o"></i> Sasaran/Output</th>
-    <th width="10%" ><i class="fa fa-search"></i> Lihat</th>
+    <th width="10%" ><i class="fa fa-search"></i> Status</th>
   <th width="16%"><i class="fa fa-gears"></i> Aksi</th>
 
   
@@ -91,8 +90,17 @@
   <td><?php echo $waktu_kegiatan;?></td>
   <td><?php if($waktu_kegiatan2=="0000-00-00"){ echo $waktu_kegiatan."(1 Hari)";} else{ echo $waktu_kegiatan2;};?></td>
   <td><?php echo $output;?></td>
-  <td><center><?php echo anchor ('kegiatan/detail_kegiatan/'.$id_kegiatan, ' <div class="btn bg-blue btn-sm"><i class ="fa fa-search"> Detail</i></div>')?></center></td>
-    <td><center><?php echo anchor ('kegiatan/edit_kegiatan/'.$id_kegiatan, ' <div class="btn btn-warning btn-sm"><i class ="fa fa-edit"> Edit</i></div>')?>
+  <td>
+  <?php 
+  $jumlah_kegiatan=$this->db->query("select * from detail_kegiatan where id_kegiatan='$id_kegiatan'")->num_rows();
+  if($jumlah_kegiatan==0){
+    echo "<center><span class='label label-danger'><i class='fa fa-close'></i> Tidak Ada Uraian Kegiatan</span></center>";
+  }
+  else{
+    echo "<center><span class='label label-success'><i class='fa fa-check-circle'></i> oke</span></center>";
+  }
+  ?>
+    <td><center><?php echo anchor ('kegiatan/edit_kegiatan/'.$id_kegiatan.'/'.$bulan.'/'.$tahun, ' <div class="btn btn-warning btn-sm"><i class ="fa fa-edit"> Edit</i></div>')?>
     <a class="btn btn-sm btn-danger" href="#hapus<?php echo $id_kegiatan?>" data-toggle="modal" title="Hapus"><span class="fa fa-trash"></span> Hapus</a></td>
 	</center>
 	
@@ -117,6 +125,85 @@
 </div>
 </div>
 </div>
+
+
+
+               <div id="exampleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="myModalLabel"><i class="fa fa-plus-circle"></i> Tambah Data Kegiatan </h3>
+                    </div>
+                    <div class="modal-body">
+                    <form method="post" class="form-horizontal" enctype="multipart/form-data" action="<?php echo base_url().'kegiatan/insert_kegiatan' ?>">
+                  <label>Kegiatan</label>
+   <div class="input-group col-lg-12">
+    <div class="input-group-addon">
+           <span class="fa fa-wrench"></span>
+       </div>
+       <input type="text" placeholder="Misal: Koordinasi terkait..." class="form-control" name="kegiatan" id="kegiatanc" autocomplete="off" required>
+   </div>
+<br>
+<input type="hidden" name="bulan" value="<?php echo $bulan?>">
+<input type="hidden" name="tahun" value="<?php echo $tahun?>">
+   <label>Tanggal (<?php echo $nama_bulan." Tahun ".$tahun?>)</label>
+   <div class="input-group col-lg-12">
+    <div class="input-group-addon">
+           <span class="fa fa-calendar"></span>
+       </div>
+       <select class="form-control" name="tanggal_awal" required>
+    <option disabled selected value> -- Pilih Tanggal -- </option>   
+        <?php 
+        $total_hari= cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+          $start_date = 1;
+          $end_date   = $total_hari;
+          for( $j=$start_date; $j<=$end_date; $j++ ) {
+            echo '<option value='.$j.'>'.$j.'</option>';
+          }
+        ?>
+      </select>
+       <div class="input-group-addon">
+           <span>Hingga</span>
+       </div>
+     	<select class="form-control" name="tanggal_akhir" required>
+    <option disabled selected value> -- Pilih Tanggal -- </option>   
+        <?php 
+        $total_hari= cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+          $start_date = 1;
+          $end_date   = $total_hari;
+          for( $j=$start_date; $j<=$end_date; $j++ ) {
+            echo '<option value='.$j.'>'.$j.'</option>';
+          }
+        ?>
+      </select>
+   </div>
+<br>
+   <label>Sasaran / Output</label>
+   <div class="input-group col-lg-12">
+    <div class="input-group-addon">
+           <span class="fa fa-circle-o"></span>
+       </div>
+       <input type="text" class="form-control" name="output" id="output" autocomplete="off" required>
+   </div>
+<br>
+   <label>Foto Dokumentasi</label>
+   <div class="input-group col-lg-12">
+    <div class="input-group-addon">
+           <span class="fa fa-camera"></span>
+       </div>
+       <input type="file" class="form-control" name="picture" id="picture" autocomplete="off" required>
+   </div>
+   <br>
+                </div>
+                <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Batal</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
+                        </form>
+                </div>
+                </div>
+                </div>
+      
 <?php 
                   
                   foreach ($data->result_array() as $sws){
@@ -136,7 +223,7 @@
                         <div class="modal-body">
                            
                             <br>
-                            <input type="hidden" name="bulan" value="<?php echo $no_bulan?>">
+                            <input type="hidden" name="bulan" value="<?php echo $bulan?>">
         <input type="hidden" name="tahun" value="<?php echo $tahun?>">
                                    <input name="id_kegiatan" type="hidden" value="<?php echo $id_kegiatan; ?>"> 
                                     <input class="form-control" name="nama"value="Tanggal : <?php echo $waktu_kegiatan; ?>" readonly>
@@ -155,9 +242,11 @@
                 </div>
                 </div>
                 </div>
+            
             <?php
         }
         ?>
+
 <!-- Modal Edit Pelanggan -->
 <footer class="main-footer">
   <div class="pull-right hidden-xs">

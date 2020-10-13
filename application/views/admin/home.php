@@ -86,8 +86,9 @@
 				labels: [ 
           <?php foreach ($grafik-> result_array() as $sws):
               $bulan=$sws['bulan'];
+              $tahun=$sws['tahun'];
               ?>
-          <?php   echo '"'.$bulan.'",';?>
+          <?php   echo '"'.$bulan.' '.$tahun.'",';?>
           <?php endforeach?>
        ],
 				datasets: [{
